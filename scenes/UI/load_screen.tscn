@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://khvy0kllnpo0"]
+
+[ext_resource type="Script" path="res://scripts/load_screen.gd" id="1_4vjtj"]
+[ext_resource type="FontFile" uid="uid://dtoxiwhbu8ihi" path="res://assets/fonts/GlitchGoblin.ttf" id="2_xtfyk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_meld8"]
+bg_color = Color(0.129412, 0.105882, 0.0901961, 1)
+skew = Vector2(1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k2200"]
+content_margin_left = 8.0
+bg_color = Color(0.564706, 0.027451, 0.290196, 1)
+skew = Vector2(1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_detail = 1
+
+[node name="Load_Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4vjtj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 363.0
+color = Color(0.172549, 0.219608, 0.231373, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -6.0
+offset_right = 118.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_meld8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_k2200")
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Label" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -174.0
+offset_top = -58.0
+offset_right = -31.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/default_color = Color(0.776471, 0.780392, 0.690196, 1)
+theme_override_fonts/italics_font = ExtResource("2_xtfyk")
+theme_override_font_sizes/italics_font_size = 30
+bbcode_enabled = true
+text = "[i]loading...[/i]"
+scroll_active = false

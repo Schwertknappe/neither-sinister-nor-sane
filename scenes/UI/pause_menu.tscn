@@ -1,0 +1,119 @@
+[gd_scene load_steps=8 format=3 uid="uid://dsp18u2omiycb"]
+
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_wltxx"]
+[ext_resource type="FontFile" uid="uid://dtoxiwhbu8ihi" path="res://assets/fonts/GlitchGoblin.ttf" id="2_2tkp4"]
+[ext_resource type="FontFile" uid="uid://bmgo6kuh3jtdh" path="res://assets/fonts/alagard.ttf" id="3_nikr8"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_85aqu"]
+button_index = 1
+
+[sub_resource type="InputEventKey" id="InputEventKey_jhlyx"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_rn6ls"]
+button_index = 6
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_nrnss"]
+events = [SubResource("InputEventJoypadButton_85aqu"), SubResource("InputEventKey_jhlyx"), SubResource("InputEventJoypadButton_rn6ls")]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wltxx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.141176)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.295312
+anchor_top = 0.147222
+anchor_right = 0.701563
+anchor_bottom = 0.277778
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_2tkp4")
+theme_override_font_sizes/font_size = 40
+text = "Game Paused"
+metadata/_edit_use_anchors_ = true
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 2
+offset_left = 272.0
+offset_top = 158.0
+offset_right = 368.0
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_nikr8")
+shortcut = SubResource("Shortcut_nrnss")
+shortcut_in_tooltip = false
+text = "Continue"
+metadata/_edit_use_anchors_ = true
+
+[node name="Respawn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -103.0
+offset_top = -40.0
+offset_right = -30.0
+offset_bottom = -18.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_nikr8")
+theme_override_font_sizes/font_size = 14
+shortcut_in_tooltip = false
+text = "Respawn"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 58.0
+offset_right = 48.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_nikr8")
+text = "Settings"
+metadata/_edit_use_anchors_ = true
+
+[node name="MainMenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_nikr8")
+text = "Main Menu"
+metadata/_edit_use_anchors_ = true
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_nikr8")
+text = "Quit
+"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

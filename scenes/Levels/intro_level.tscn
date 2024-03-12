@@ -1,0 +1,302 @@
+[gd_scene load_steps=37 format=3 uid="uid://co80uiedfe5dc"]
+
+[ext_resource type="Script" path="res://scripts/world_logic.gd" id="1_pj5xq"]
+[ext_resource type="Texture2D" uid="uid://dmn7kwqwk7tx8" path="res://assets/textures/sky.png" id="1_w6pe7"]
+[ext_resource type="PackedScene" uid="uid://8bhnroj5t7pa" path="res://scenes/Objects/tunnel.tscn" id="2_dh5sm"]
+[ext_resource type="Script" path="res://scripts/intro_level.gd" id="2_ynsbt"]
+[ext_resource type="PackedScene" uid="uid://i7y4atl4hscv" path="res://scenes/player.tscn" id="3_utsrw"]
+[ext_resource type="Texture2D" uid="uid://b8x7ngppo2ux" path="res://assets/textures/ground.png" id="4_4cndl"]
+[ext_resource type="Texture2D" uid="uid://bfqo70n1r4303" path="res://assets/textures/ground_n.png" id="5_epc4g"]
+[ext_resource type="MeshLibrary" uid="uid://bto3hhjucepr4" path="res://assets/models/tree_mesh.tres" id="6_g78jo"]
+[ext_resource type="AudioStream" uid="uid://dirujbidia8hq" path="res://assets/audio/sfx/breeze-trees.ogg" id="6_wg2kn"]
+[ext_resource type="MeshLibrary" uid="uid://y1nwyip0i4d3" path="res://assets/models/foliage_mesh.tres" id="7_wyrwj"]
+[ext_resource type="AudioStream" uid="uid://bpgyhiai37bbh" path="res://assets/audio/sfx/campfire.ogg" id="8_6ow3k"]
+[ext_resource type="PackedScene" uid="uid://bfxoh20ewh5y3" path="res://scenes/Objects/campfire.tscn" id="8_i0t7f"]
+[ext_resource type="PackedScene" uid="uid://bcy6jf2s835y1" path="res://scenes/Objects/cylinder_boundary.tscn" id="9_iexq5"]
+[ext_resource type="PackedScene" uid="uid://0vinvwaveln" path="res://scenes/UI/ui.tscn" id="11_mkqfp"]
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="12_qcmox"]
+[ext_resource type="Shader" path="res://scripts/start_menu.gdshader" id="13_unfei"]
+[ext_resource type="Texture2D" uid="uid://f001p8n3riq8" path="res://assets/sprites/flat.png" id="15_dqa0n"]
+[ext_resource type="FontFile" uid="uid://dtoxiwhbu8ihi" path="res://assets/fonts/GlitchGoblin.ttf" id="16_2nigi"]
+[ext_resource type="FontFile" uid="uid://bn3jb8j34f8wj" path="res://assets/fonts/Fragmenta.ttf" id="17_hnbac"]
+[ext_resource type="FontFile" uid="uid://bmgo6kuh3jtdh" path="res://assets/fonts/alagard.ttf" id="20_2na7q"]
+[ext_resource type="Script" path="res://scripts/spawn_point.gd" id="21_swp1h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_psngu"]
+albedo_texture = ExtResource("4_4cndl")
+metallic_specular = 0.0
+normal_enabled = true
+normal_texture = ExtResource("5_epc4g")
+uv1_scale = Vector3(50, 50, 50)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r5tar"]
+material = SubResource("StandardMaterial3D_psngu")
+size = Vector2(100, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j16lu"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ih0k8"]
+size = Vector3(2.14771, 3.4267, 1.88904)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_v567b"]
+panorama = ExtResource("1_w6pe7")
+
+[sub_resource type="Sky" id="Sky_1rp1v"]
+sky_material = SubResource("PanoramaSkyMaterial_v567b")
+
+[sub_resource type="Environment" id="Environment_0hh7n"]
+background_mode = 2
+sky = SubResource("Sky_1rp1v")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.0156863, 0.0235294, 0.027451, 1)
+fog_density = 0.06
+fog_sky_affect = 0.5
+
+[sub_resource type="Gradient" id="Gradient_lhqsd"]
+offsets = PackedFloat32Array(0, 0.406863, 0.823529, 1)
+colors = PackedColorArray(0.148297, 0.0584004, 0.133129, 0.823529, 0.4, 0.270588, 0.0509804, 0.223529, 0.712784, 0.515121, 0.214347, 0, 0.480755, 0.241712, 1.92523e-07, 0.439216)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0cygm"]
+gradient = SubResource("Gradient_lhqsd")
+fill_from = Vector2(0.162393, 0.162393)
+fill_to = Vector2(0.888889, 0.91453)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i0svv"]
+frequency = 0.0026
+fractal_octaves = 3
+fractal_lacunarity = 2.21
+fractal_gain = -0.16
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ctsb8"]
+seamless = true
+noise = SubResource("FastNoiseLite_i0svv")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ic88p"]
+frequency = 0.0026
+fractal_octaves = 2
+fractal_lacunarity = 5.355
+fractal_gain = -0.2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ak4wo"]
+seamless = true
+noise = SubResource("FastNoiseLite_ic88p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4jslp"]
+shader = ExtResource("13_unfei")
+shader_parameter/scroll1 = Vector2(0.1, 0.1)
+shader_parameter/scroll2 = Vector2(-0.1, -0.1)
+shader_parameter/distortion_strength = 0.2
+shader_parameter/noise1 = SubResource("NoiseTexture2D_ctsb8")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_ak4wo")
+shader_parameter/gradient = SubResource("GradientTexture2D_0cygm")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3hg7t"]
+size = Vector3(3.25488, 4.87744, 1)
+
+[node name="World" type="Node"]
+script = ExtResource("1_pj5xq")
+
+[node name="Level" type="Node" parent="."]
+script = ExtResource("2_ynsbt")
+
+[node name="Tunnel" parent="Level" instance=ExtResource("2_dh5sm")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 1, 0, 9)
+
+[node name="Ground" type="MeshInstance3D" parent="Level"]
+mesh = SubResource("PlaneMesh_r5tar")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_j16lu")
+
+[node name="Trees" type="GridMap" parent="Level"]
+mesh_library = ExtResource("6_g78jo")
+cell_size = Vector3(1, 2, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65530, 10, 0, 1, 18, 0, 5, 11, 0, 65522, 1, 0, 65512, 65531, 0, 65511, 20, 0, 8, 17, 0, 65527, 18, 0, 65521, 12, 0, 65525, 8, 0, 65530, 22, 0, 65517, 65530, 0, 65526, 65524, 0, 65522, 65518, 0, 65529, 65517, 0, 65530, 65514, 0, 12, 6, 0, 18, 8, 0, 19, 0, 0, 16, 1, 0, 17, 65533, 0, 4, 65516, 0, 2, 65517, 0, 9, 65519, 0, 30, 65526, 0, 21, 65524, 0, 14, 65530, 0, 15, 65521, 0, 21, 65512, 0, 65534, 65504, 0, 65533, 65511, 0, 9, 65506, 0, 12, 65513, 0, 65513, 65518, 0, 65512, 65526, 0, 65529, 65531, 0, 65520, 6, 0, 65528, 1, 0, 9, 13, 0, 13, 11, 0, 22, 4, 0, 22, 65531, 0, 16, 65526, 0, 21, 65520, 0, 16, 65517, 0, 11, 65525, 0, 8, 8, 0, 2, 15, 0, 65527, 13, 0, 65529, 6, 0, 65525, 65533, 0, 65525, 3, 0, 65522, 65528, 0, 2, 65511, 0, 65531, 65521, 0, 0, 65522, 0, 65531, 65526, 0, 4, 65522, 0, 8, 65531, 0, 11, 65534, 0, 65520, 65533, 0, 65521, 65525, 0, 65525, 65515, 0, 65516, 0, 0, 65522, 17, 0, 65532, 20, 0, 0, 24, 0, 6, 22, 0, 12, 20, 0, 13, 16, 0, 21, 14, 0, 16, 13, 0, 27, 7, 0, 21, 9, 0, 27, 0, 0, 23, 65535, 0, 26, 65526, 0, 20, 65527, 0, 27, 65529, 0, 6, 65513, 0, 26, 65516, 0, 27, 65521, 0, 65527, 65528, 0, 65534, 65518, 0, 65526, 65521, 0, 65516, 4, 0, 65515, 10, 0, 65524, 21, 0, 10, 23, 0, 9, 3, 0, 17, 5, 0, 65511, 1, 0, 65511, 5, 0, 65517, 14, 0, 65512, 12, 0, 65505, 7, 0, 65508, 10, 0, 65507, 3, 0, 65507, 65531, 0, 65505, 0, 0, 65516, 65521, 0, 65516, 65525, 0, 65521, 65512, 0, 65519, 65515, 0, 65528, 65508, 0, 65525, 65506, 0, 65526, 65512, 0, 65532, 65507, 0, 4, 65506, 0, 0, 65507, 0, 8, 65509, 0, 12, 65515, 0, 18, 65509, 0, 17, 65514, 0, 13, 65509, 0, 12, 65520, 0, 6, 65522, 0, 9, 65527, 0, 29, 65530, 0, 26, 65532, 0, 36, 2, 0, 33, 65531, 0, 31, 65534, 0, 31, 2, 0, 27, 4, 0, 32, 6, 0, 25, 11, 0, 24, 8, 0, 20, 18, 0, 17, 17, 0, 16, 22, 0, 5, 19, 0, 5, 25, 0, 13, 3, 0, 65533, 27, 0, 65528, 27, 0, 65524, 25, 0, 65519, 21, 0, 65517, 19, 0, 1, 29, 0, 9, 28, 0, 12, 26, 0, 22, 23, 0, 24, 19, 0, 26, 15, 0, 30, 13, 0, 30, 10, 0, 21, 65516, 0, 65535, 65514, 0, 65521, 65522, 0, 65511, 65522, 0, 65515, 65515, 0, 65534, 5, 655360, 65531, 65534, 0, 5, 65526, 0, 65531, 1, 0, 65534, 65525, 0, 18, 65531, 0, 14, 65534, 0, 11, 65530, 0, 15, 9, 0, 10, 65522, 0, 18, 65522, 0, 23, 65527, 0, 19, 11, 0, 6, 15, 0, 65528, 15, 0, 65524, 14, 0, 2, 22, 0, 65534, 21, 0, 65527, 23, 0, 65519, 10, 0, 65519, 2, 0, 65523, 5, 0, 65514, 7, 0, 65510, 9, 0, 65515, 65534, 0, 65510, 65529, 0, 65509, 65534, 0, 8, 65516, 0, 5, 65519, 0, 2, 65514, 0, 65518, 65518, 0, 65524, 65510, 0)
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Level/Trees"]
+process_mode = 3
+stream = ExtResource("6_wg2kn")
+volume_db = 5.0
+autoplay = true
+bus = &"SFX"
+
+[node name="Foliage" type="GridMap" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh_library = ExtResource("7_wyrwj")
+data = {
+"cells": PackedInt32Array(65530, 3, 655360, 65534, 4, 0, 4, 4, 0, 5, 65535, 655360, 3, 1, 0, 5, 65530, 0, 65533, 1, 655360, 2, 10, 655360, 7, 1, 655360, 12, 65533, 655360, 7, 65528, 655360, 9, 4, 655360, 65528, 65535, 655360, 8, 65532, 655360, 3, 65529, 655360, 65533, 65525, 655360, 65535, 65528, 655360, 65532, 65531, 655360, 65535, 9, 655360, 6, 11, 655360, 2, 6, 655360)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Campfire" parent="Level" instance=ExtResource("8_i0t7f")]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01706, 0, -4.93003)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Level/Campfire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369043, 0)
+light_color = Color(1, 0.486275, 0.176471, 1)
+omni_range = 15.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Level/Campfire"]
+stream = ExtResource("8_6ow3k")
+autoplay = true
+bus = &"SFX"
+
+[node name="World Bounds" parent="Level" instance=ExtResource("9_iexq5")]
+transform = Transform3D(0.115941, 0, -12.9995, 0, 13, 0, 12.9995, 0, 0.115941, 2.41346, 0, -0.36976)
+
+[node name="LoadTrigger" type="Area3D" parent="Level"]
+transform = Transform3D(0.853551, 0, -0.52101, 0, 1, 0, 0.52101, 0, 0.853551, -0.360612, 1.45569, 11.3656)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/LoadTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0, 0.518738)
+shape = SubResource("BoxShape3D_ih0k8")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0hh7n")
+
+[node name="Player" parent="." instance=ExtResource("3_utsrw")]
+unique_name_in_owner = true
+collision_layer = 9
+
+[node name="UI" parent="." instance=ExtResource("11_mkqfp")]
+
+[node name="StartMenu" type="Control" parent="UI"]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_qcmox")
+
+[node name="Title" type="Label" parent="UI/StartMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -157.0
+offset_top = 78.0
+offset_right = 217.0
+offset_bottom = 120.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("16_2nigi")
+theme_override_font_sizes/font_size = 30
+text = "NO MORE SINISTER"
+
+[node name="Subtitle" type="Label" parent="UI/StartMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -213.0
+offset_top = 114.0
+offset_right = 161.0
+offset_bottom = 156.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("17_hnbac")
+theme_override_font_sizes/font_size = 40
+text = "than sane"
+horizontal_alignment = 2
+
+[node name="Shader" type="Sprite2D" parent="UI/StartMenu"]
+material = SubResource("ShaderMaterial_4jslp")
+position = Vector2(314.448, 182)
+scale = Vector2(0.354742, 0.353704)
+texture = ExtResource("15_dqa0n")
+
+[node name="Start" type="Button" parent="UI/StartMenu"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = 26.0
+offset_right = 57.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("20_2na7q")
+theme_override_font_sizes/font_size = 24
+text = "Start"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/StartMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -87.0
+offset_right = 46.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Settings" type="Button" parent="UI/StartMenu/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("20_2na7q")
+text = "Settings
+"
+
+[node name="Quit" type="Button" parent="UI/StartMenu/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("20_2na7q")
+text = "Quit"
+
+[node name="ColorRect" type="ColorRect" parent="UI/StartMenu"]
+layout_mode = 0
+offset_left = -68.0
+offset_top = -100.0
+offset_right = 132.0
+offset_bottom = 361.0
+rotation = 0.302051
+
+[node name="ColorRect2" type="ColorRect" parent="UI/StartMenu"]
+layout_mode = 0
+offset_left = 653.0
+offset_top = -54.0
+offset_right = 853.0
+offset_bottom = 407.0
+rotation = 0.302051
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="Spawn0" type="Marker3D" parent="SpawnPoints"]
+script = ExtResource("21_swp1h")
+
+[node name="Area3D" type="Area3D" parent="SpawnPoints/Spawn0"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPoints/Spawn0/Area3D"]
+shape = SubResource("BoxShape3D_3hg7t")
+
+[connection signal="body_entered" from="Level/LoadTrigger" to="Level" method="_on_load_trigger_body_entered"]
+[connection signal="pressed" from="UI/PauseMenu/Continue" to="." method="unpause"]
+[connection signal="pressed" from="UI/StartMenu/Start" to="UI" method="unpause"]
+[connection signal="pressed" from="UI/StartMenu/VBoxContainer/Settings" to="UI" method="_on_startmenu_settings_pressed"]
+[connection signal="pressed" from="UI/StartMenu/VBoxContainer/Quit" to="UI" method="quit"]
+
+[editable path="UI"]
+[editable path="UI/PauseMenu"]
+[editable path="UI/Settings"]

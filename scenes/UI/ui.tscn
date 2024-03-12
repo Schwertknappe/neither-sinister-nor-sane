@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://0vinvwaveln"]
+
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_8dxjh"]
+[ext_resource type="PackedScene" uid="uid://dsp18u2omiycb" path="res://scenes/UI/pause_menu.tscn" id="1_m14ew"]
+[ext_resource type="PackedScene" uid="uid://b2l81ctmj8ysh" path="res://scenes/UI/settings.tscn" id="2_6t6tg"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8dxjh")
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_m14ew")]
+visible = false
+layout_mode = 1
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="FocusGrabber" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -56.0
+offset_top = 83.0
+offset_right = -48.0
+offset_bottom = 91.0
+
+[node name="Settings" parent="." instance=ExtResource("2_6t6tg")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="PauseMenu/Continue" to="." method="unpause"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Quit" to="." method="quit"]
+[connection signal="pressed" from="Settings/MarginContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+
+[editable path="PauseMenu"]
+[editable path="Settings"]

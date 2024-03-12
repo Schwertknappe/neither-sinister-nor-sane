@@ -1,0 +1,297 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2l81ctmj8ysh"]
+
+[ext_resource type="Script" path="res://scripts/settings.gd" id="1_7p1xo"]
+[ext_resource type="FontFile" uid="uid://dtoxiwhbu8ihi" path="res://assets/fonts/GlitchGoblin.ttf" id="2_jxifd"]
+[ext_resource type="FontFile" uid="uid://bmgo6kuh3jtdh" path="res://assets/fonts/alagard.ttf" id="3_pwag0"]
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_cf87y"]
+button_index = 1
+
+[sub_resource type="InputEventKey" id="InputEventKey_ll2y2"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_4ackd"]
+events = [SubResource("InputEventJoypadButton_cf87y"), SubResource("InputEventKey_ll2y2")]
+
+[node name="Settings" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7p1xo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.294118, 0.266667, 0.254902, 0.643137)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -574.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.141176, 0.12549, 0.117647, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+process_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 574.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.141176, 0.12549, 0.117647, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="SettingsLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jxifd")
+theme_override_font_sizes/font_size = 26
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+follow_focus = true
+scroll_vertical = 100
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VolumeLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 16
+columns = 2
+
+[node name="MasterLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VolumeContainer"]
+layout_mode = 2
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VolumeContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="MusicLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VolumeContainer"]
+layout_mode = 2
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VolumeContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="SFXLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VolumeContainer"]
+layout_mode = 2
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VolumeContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DisplayLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Display"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DisplayContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="FullscreenLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DisplayContainer"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DisplayContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="ResolutionLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DisplayContainer"]
+layout_mode = 2
+text = "Resolution"
+
+[node name="ResolutionOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DisplayContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSyncLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DisplayContainer"]
+layout_mode = 2
+text = "VSync
+"
+
+[node name="VSyncCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DisplayContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GameplayLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Gameplay"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameplayContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="RollAnimLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GameplayContainer"]
+layout_mode = 2
+text = "Enable Roll Animation"
+
+[node name="RollAnimCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GameplayContainer"]
+layout_mode = 2
+button_pressed = true
+alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ControlsLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Gameplay"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControlsContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="ControllerSensitivityLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/ControlsContainer"]
+layout_mode = 2
+text = "Controller
+Sensitivity"
+
+[node name="ControllerSensitivitySlider" type="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/ControlsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 50.0
+max_value = 450.0
+step = 10.0
+value = 250.0
+
+[node name="MouseSensitivityLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/ControlsContainer"]
+layout_mode = 2
+text = "Mouse
+Sensitivity"
+
+[node name="MouseSensitivitySlider" type="HSlider" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/ControlsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.05
+max_value = 0.6
+step = 0.01
+value = 0.24
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="DefaultButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pwag0")
+text = "Default"
+
+[node name="ApplyButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pwag0")
+text = "Apply"
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pwag0")
+shortcut = SubResource("Shortcut_4ackd")
+text = "Back"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VolumeContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VolumeContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/VolumeContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DisplayContainer/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DisplayContainer/ResolutionOptionButton" to="." method="_on_resolution_item_selected"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/DisplayContainer/VSyncCheckBox" to="." method="_on_vsync_check_box_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GameplayContainer/RollAnimCheckBox" to="." method="_on_roll_anim_check_box_toggled"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/ControlsContainer/ControllerSensitivitySlider" to="." method="_on_controller_sensitivity_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/ControlsContainer/MouseSensitivitySlider" to="." method="_on_mouse_sensitivity_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/DefaultButton" to="." method="_on_default_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ApplyButton" to="." method="_on_apply_button_pressed"]

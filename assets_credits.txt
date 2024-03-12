@@ -1,0 +1,29 @@
+Multiple Assets from Kenney https://kenney.nl/
+
+Textures:
+	- Plant foliage decal texture by bart: https://opengameart.org/content/plant-foliage-decal-texture
+	- multiple CC0 textures taken from Poly Haven: https://polyhaven.com/
+
+Fonts:
+	- Fragmenta: https://www.dafont.com/de/fragmenta.font?l[]=10&l[]=1
+	- Glitch Goblin: https://www.dafont.com/de/glitch-goblin.font?l[]=10&l[]=1
+	- Alagard: https://www.dafont.com/de/alagard.font?l[]=10&l[]=1
+
+SFX:
+	- breeze tree by Pixabay: https://pixabay.com/sound-effects/breeze-tree-70268/
+	- Grassy Footstep 3 by Ashe Kirk: https://freesound.org/people/OwlStorm/sounds/151228/
+	- Fabric flaps by PelicanPolice: https://freesound.org/people/PelicanPolice/sounds/580967/
+	- Campfire crackling - loop by marb7e: https://freesound.org/people/marb7e/sounds/620324/
+	- Storm wind.wav by juskiddink: https://freesound.org/people/juskiddink/sounds/136287/
+	- Cloth, Bedding, brush, sweep-015.wav by MattRuthSound: https://freesound.org/people/MattRuthSound/sounds/561574/
+	
+
+Samples:
+	- Cave Ambience by IanStarGem: https://freesound.org/people/IanStarGem/sounds/269595/
+	- Ominous and Deep Ambience by Resaural: https://freesound.org/people/Resaural/sounds/467026/
+	- Eerie SFX by NicknameLarry: https://freesound.org/people/NicknameLarry/sounds/511216/
+	- ethereal guitar playing by Pixabay: https://pixabay.com/sound-effects/ethereal-guitar-playing-22729/
+
+Plugins:
+	- Cyclops Level Builder by blackears: https://github.com/blackears/cyclopsLevelBuilder
+	- InputHelper by nathahoad: https://github.com/nathanhoad/godot_input_helper

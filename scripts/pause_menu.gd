@@ -1,0 +1,16 @@
+extends Control
+
+func _input(event):
+	if event is InputEventMouse:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$Continue.grab_focus()
+
+
+
+func _on_main_menu_pressed():
+	Globals.goto_scene("intro")

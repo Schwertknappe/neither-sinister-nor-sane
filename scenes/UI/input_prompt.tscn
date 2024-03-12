@@ -1,0 +1,19 @@
+[gd_scene load_steps=7 format=3 uid="uid://bseeap53c7gio"]
+
+[ext_resource type="Script" path="res://scripts/input_prompt.gd" id="1_h8xao"]
+[ext_resource type="Texture2D" uid="uid://g4ma27si8k45" path="res://assets/sprites/generic_button_circle_outline.png" id="2_evaww"]
+[ext_resource type="Texture2D" uid="uid://3pgr2tr5xhi" path="res://assets/sprites/keyboard_space_outline_big.png" id="2_hock6"]
+[ext_resource type="Texture2D" uid="uid://cxfx7ig366hbv" path="res://assets/sprites/xbox_a.png" id="3_3aegr"]
+[ext_resource type="Texture2D" uid="uid://ce7ohj22ysk0k" path="res://assets/sprites/ps_x.png" id="4_xugoe"]
+[ext_resource type="Texture2D" uid="uid://c1om88b8jo02c" path="res://assets/sprites/switch_b.png" id="5_24nq6"]
+
+[node name="InputPrompt" type="Node3D"]
+script = ExtResource("1_h8xao")
+keyboard_sprite = ExtResource("2_hock6")
+xbox_sprite = ExtResource("3_3aegr")
+ps_sprite = ExtResource("4_xugoe")
+switch_sprite = ExtResource("5_24nq6")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+modulate = Color(0.776471, 0.780392, 0.690196, 1)
+texture = ExtResource("2_evaww")
